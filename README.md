@@ -15,21 +15,18 @@ Key Activities:
 * Data Handling: The MNIST dataset, containing 70,000 images of handwritten digits, is loaded directly from TensorFlow's
   datasets library. The images are normalized by scaling their pixel values from a 0-255 range to a 0-1 range for better
   model performance.
-* Model Architecture: A `Sequential` model is constructed using the Keras API. It consists of:
-    - A `Flatten` layer to convert the 28x28 pixel images into a 1D array.
-    - A `Dense` hidden layer with 128 neurons and a `ReLU` activation function.
-    - A `Dense` output layer with 10 neurons (one for each digit) and a `softmax` activation function to output a
-      probability distribution.
-    - Training & Evaluation: The model is compiled with the adam optimizer and sparse_categorical_crossentropy loss
-      function. It's trained for 10 epochs, and its performance is validated on a separate test set.
-    - Artifact Generation: The final, trained model is saved to a file named `mnist_model.keras`, making it reusable for
-      deployment.
+
+* **Architecture**: A Convolutional Neural Network (CNN) built with the Keras Sequential API. It includes:
+* Two `Conv2D` layers (with 32 and 64 filters respectively) to identify features like edges and patterns.
+* `MaxPooling2D` layers to downsample and make the model more robust to digit positioning.
+* A `Dropout` layer (rate of 0.5) to prevent overfitting.
+* A final `Dense` output layer with a `softmax` activation function.
 
 * Training & Evaluation: The model is compiled with the `adam` optimizer and `sparse_categorical_crossentropy` loss
   function. It's trained for 10 epochs, and its performance is validated on a separate test set.
 * Artifact Generation: The final, trained model is saved to a file named `mnist_model.keras`, making it reusable for
   deployment.
-
+![layers.png](resources/layers.png)
 ### Model Performance Insights
 
 The model's performance was evaluated after training for 10 epochs.
